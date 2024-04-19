@@ -27,6 +27,7 @@ export interface Env {
 
 export default {
 	async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
-		return new Response('Hello World!');
+		const path = new URL(request.url).pathname.slice(1);
+		return new Response(path);
 	},
 };

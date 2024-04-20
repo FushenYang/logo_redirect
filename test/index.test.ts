@@ -10,7 +10,7 @@ describe('Worker', () => {
 		expect(response.status).toBe(200);
 	});
 
-	it('should return hello response', async() =>{
+	it('should return pathname', async() =>{
 		const request = new Request("http://test.com/hello");
 		const ctx = createExecutionContext();
 		const response = await worker.fetch(request, env, ctx);
@@ -19,6 +19,14 @@ describe('Worker', () => {
 		const out = await response_not.text()
 		expect(out).not.toBe("hello")
 		expect(out).toBe("world")
+	})
+
+	// run this test,please put a file in .wrangler/state/v3/r2/
+	it('should return imagefile', async() =>{
+		const request = new Request("http://test.com/image.jpg");
+		const ctx = createExecutionContext();
+		const response = await worker.fetch(request, env, ctx);
+		expect(response.headers.get('Content-Type')).toBe('image/jpeg');
 	})
 
 	// it('should return the image file', async () => {

@@ -20,6 +20,7 @@ compatibility_flags = [ "nodejs_compat" ]
 [[r2_buckets]]
 binding = "R2"
 bucket_name = "scienco"
+preview_bucket_name = "sciencodev"
 
 # Bind a Queue producer. Use this binding to schedule an arbitrary task that may be processed later by a Queue consumer.
 # Docs: https://developers.cloudflare.com/queues/get-started
